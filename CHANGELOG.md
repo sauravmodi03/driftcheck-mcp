@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- README: demo GIF (generated from real runs by `scripts/make_demo.py`) and badges.
+
 ## 0.1.0
 
 - Extract and verify claims in markdown: file paths, local ports, systemd units, Forgejo repos.

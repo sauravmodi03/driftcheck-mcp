@@ -1,6 +1,13 @@
 # driftcheck
 
+[![PyPI](https://img.shields.io/pypi/v/driftcheck-mcp)](https://pypi.org/project/driftcheck-mcp/)
+[![Python](https://img.shields.io/pypi/pyversions/driftcheck-mcp)](https://pypi.org/project/driftcheck-mcp/)
+[![CI](https://github.com/sauravmodi03/driftcheck-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/sauravmodi03/driftcheck-mcp/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 **Your agent's context files rot. driftcheck tells you which facts are no longer true.**
+
+![driftcheck catching two stale facts in a CLAUDE.md](docs/demo.gif)
 
 `CLAUDE.md`, runbooks and memory notes say things like "the app listens on
 :3000", "restarts use `foo.service`", "the code lives in repo X". When those
@@ -117,5 +124,9 @@ extracted.
 ## Development
 
     uv run python -m unittest discover -s tests
+
+The demo GIF is generated from real runs in a throwaway sandbox (needs ImageMagick):
+
+    python3 scripts/make_demo.py docs/demo.gif
 
 MIT licensed.
