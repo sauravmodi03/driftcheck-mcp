@@ -55,7 +55,7 @@ def render(name: str, calendar: str, exec_cmd: list[str], paths: list[str],
 def _default_exec() -> list[str]:
     exe = shutil.which("driftcheck")
     if not exe:
-        raise SystemExit("driftcheck is not on PATH; install it (`uv tool install driftcheck`) "
+        raise SystemExit("driftcheck is not on PATH; install it (`uv tool install driftcheck-mcp`) "
                          "or pass --exec '<command that runs driftcheck>'")
     return [os.path.realpath(exe)]
 

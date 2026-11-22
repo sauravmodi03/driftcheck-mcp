@@ -8,15 +8,14 @@ go stale, an agent acts on them with full confidence. `driftcheck` extracts
 the checkable claims from markdown and verifies each one against the live
 system. It is deterministic: no LLM is involved in checking.
 
-- Zero runtime dependencies (stdlib only); the MCP server is an optional extra.
+- The checking engine is stdlib-only; the package adds the MCP SDK for the server.
 - Read-only: it never changes files, services or repos.
 - Exit code 1 on drift, so it drops into CI or a systemd timer.
 
 ## Install
 
-    uvx driftcheck CLAUDE.md                       # run without installing
-    uv tool install driftcheck                     # or install the CLI
-    uv tool install "driftcheck[mcp]"              # CLI + MCP server
+    uvx --from driftcheck-mcp driftcheck CLAUDE.md   # run once, without installing
+    uv tool install driftcheck-mcp                   # installs `driftcheck` and `driftcheck-mcp`
 
 (From a checkout: `uv run driftcheck CLAUDE.md`.)
 
@@ -89,7 +88,7 @@ OK           examples/stale-runbook.md:7  path /etc/hostname  - exists
 Lets an agent check its own context before acting. One read-only tool:
 `check_docs(paths, include_ok=false, scope=null)`.
 
-    claude mcp add --scope user driftcheck -- uvx --from "driftcheck[mcp]" driftcheck-mcp
+    claude mcp add --scope user driftcheck -- uvx driftcheck-mcp
 
 ## Forgejo configuration
 
